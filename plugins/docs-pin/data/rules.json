@@ -1,0 +1,478 @@
+{
+  "schema": 1,
+  "notes": "package is <ecosystem>:<name>; range uses >=,<,^,~ comparators, space = AND, || = OR; severity deny -> ask the user, warn -> tell Claude after the edit.",
+  "rules": [
+    {
+      "id": "react-dom-render-18",
+      "package": "npm:react-dom",
+      "range": ">=18.0.0 <19.0.0",
+      "pattern": "\\bReactDOM\\.render\\s*\\(|\\bimport\\s*\\{[^}]*\\brender\\b[^}]*\\}\\s*from\\s*['\\\"]react-dom['\\\"]",
+      "globs": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx",
+        "*.mjs",
+        "*.cjs"
+      ],
+      "severity": "warn",
+      "message": "ReactDOM.render is deprecated in React 18 (it runs in legacy mode). Use createRoot from 'react-dom/client': createRoot(el).render(<App />).",
+      "flags": ""
+    },
+    {
+      "id": "react-dom-render-19",
+      "package": "npm:react-dom",
+      "range": ">=19.0.0",
+      "pattern": "\\bReactDOM\\.render\\s*\\(|\\bimport\\s*\\{[^}]*\\brender\\b[^}]*\\}\\s*from\\s*['\\\"]react-dom['\\\"]",
+      "globs": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx",
+        "*.mjs",
+        "*.cjs"
+      ],
+      "severity": "deny",
+      "message": "ReactDOM.render was removed in React 19. Use createRoot from 'react-dom/client': createRoot(el).render(<App />).",
+      "flags": ""
+    },
+    {
+      "id": "react-dom-hydrate",
+      "package": "npm:react-dom",
+      "range": ">=18.0.0",
+      "pattern": "\\bReactDOM\\.hydrate\\s*\\(|\\bimport\\s*\\{[^}]*\\bhydrate\\b[^}]*\\}\\s*from\\s*['\\\"]react-dom['\\\"]",
+      "globs": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx",
+        "*.mjs",
+        "*.cjs"
+      ],
+      "severity": "warn",
+      "message": "ReactDOM.hydrate is deprecated in React 18 and removed in React 19. Use hydrateRoot(el, <App />) from 'react-dom/client'.",
+      "flags": ""
+    },
+    {
+      "id": "react-dom-unmount",
+      "package": "npm:react-dom",
+      "range": ">=18.0.0",
+      "pattern": "\\bunmountComponentAtNode\\s*\\(",
+      "globs": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx",
+        "*.mjs",
+        "*.cjs"
+      ],
+      "severity": "warn",
+      "message": "unmountComponentAtNode is deprecated in React 18 and removed in React 19. Keep the root from createRoot() and call root.unmount().",
+      "flags": ""
+    },
+    {
+      "id": "react-dom-finddomnode",
+      "package": "npm:react-dom",
+      "range": ">=19.0.0",
+      "pattern": "\\bfindDOMNode\\s*\\(",
+      "globs": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx",
+        "*.mjs",
+        "*.cjs"
+      ],
+      "severity": "deny",
+      "message": "findDOMNode was removed in React 19. Attach a ref to the DOM element instead.",
+      "flags": ""
+    },
+    {
+      "id": "react-19-defaultprops",
+      "package": "npm:react",
+      "range": ">=19.0.0",
+      "pattern": "\\b[A-Z]\\w*\\.defaultProps\\s*=",
+      "globs": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx",
+        "*.mjs",
+        "*.cjs"
+      ],
+      "severity": "warn",
+      "message": "React 19 ignores defaultProps on function components (only class components keep them). Use ES default parameters in the props destructuring.",
+      "flags": ""
+    },
+    {
+      "id": "react-19-proptypes",
+      "package": "npm:react",
+      "range": ">=19.0.0",
+      "pattern": "\\b[A-Z]\\w*\\.propTypes\\s*=",
+      "globs": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx",
+        "*.mjs",
+        "*.cjs"
+      ],
+      "severity": "warn",
+      "message": "React 19 removed propTypes checking; these declarations are silently ignored. Use TypeScript types instead.",
+      "flags": ""
+    },
+    {
+      "id": "next-router-in-app",
+      "package": "npm:next",
+      "range": ">=13.0.0",
+      "pattern": "from\\s+['\\\"]next/router['\\\"]",
+      "globs": [
+        "app/*",
+        "src/app/*",
+        "*/app/*"
+      ],
+      "severity": "deny",
+      "message": "'next/router' does not work in the App Router (app/ directory). Import useRouter, usePathname and useSearchParams from 'next/navigation'.",
+      "flags": ""
+    },
+    {
+      "id": "next-pages-data-in-app",
+      "package": "npm:next",
+      "range": ">=13.0.0",
+      "pattern": "export\\s+(async\\s+)?function\\s+(getServerSideProps|getStaticProps|getStaticPaths)\\b|export\\s+const\\s+(getServerSideProps|getStaticProps|getStaticPaths)\\b",
+      "globs": [
+        "app/*",
+        "src/app/*",
+        "*/app/*"
+      ],
+      "severity": "deny",
+      "message": "getServerSideProps / getStaticProps / getStaticPaths are not supported in the App Router. Fetch data directly in an async Server Component and use generateStaticParams for static paths.",
+      "flags": ""
+    },
+    {
+      "id": "next-head-in-app",
+      "package": "npm:next",
+      "range": ">=13.0.0",
+      "pattern": "from\\s+['\\\"]next/head['\\\"]",
+      "globs": [
+        "app/*",
+        "src/app/*",
+        "*/app/*"
+      ],
+      "severity": "warn",
+      "message": "next/head is not used in the App Router. Export a `metadata` object or a generateMetadata function from the layout or page.",
+      "flags": ""
+    },
+    {
+      "id": "openai-py-v0-api",
+      "package": "pypi:openai",
+      "range": ">=1.0.0",
+      "pattern": "\\bopenai\\.(ChatCompletion|Completion|Embedding|Image|Moderation|Edit)\\.a?create\\b",
+      "globs": [
+        "*.py"
+      ],
+      "severity": "deny",
+      "message": "The module-level openai.ChatCompletion / Completion / Embedding APIs were removed in openai>=1.0. Use client = OpenAI(); client.chat.completions.create(...), client.embeddings.create(...), client.images.generate(...).",
+      "flags": ""
+    },
+    {
+      "id": "openai-node-v3-api",
+      "package": "npm:openai",
+      "range": ">=4.0.0",
+      "pattern": "\\bnew\\s+OpenAIApi\\s*\\(|\\bnew\\s+Configuration\\s*\\(|\\.createChatCompletion\\s*\\(|\\.createCompletion\\s*\\(",
+      "context": "openai",
+      "globs": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx",
+        "*.mjs",
+        "*.cjs"
+      ],
+      "severity": "deny",
+      "message": "OpenAIApi / Configuration / createChatCompletion are the v3 SDK and were removed in openai v4. Use: const client = new OpenAI(); await client.chat.completions.create({...}).",
+      "flags": ""
+    },
+    {
+      "id": "pydantic-v1-dict",
+      "package": "pypi:pydantic",
+      "range": ">=2.0.0",
+      "pattern": "\\.dict\\(",
+      "context": "pydantic|BaseModel",
+      "globs": [
+        "*.py"
+      ],
+      "severity": "warn",
+      "message": "Model.dict() is deprecated in Pydantic v2. Use .model_dump() (and .model_dump_json() instead of .json()).",
+      "flags": ""
+    },
+    {
+      "id": "pydantic-v1-parse",
+      "package": "pypi:pydantic",
+      "range": ">=2.0.0",
+      "pattern": "\\.(parse_obj|parse_raw|parse_file)\\s*\\(",
+      "context": "pydantic|BaseModel",
+      "globs": [
+        "*.py"
+      ],
+      "severity": "warn",
+      "message": "parse_obj / parse_raw are deprecated in Pydantic v2. Use Model.model_validate(data) or Model.model_validate_json(text).",
+      "flags": ""
+    },
+    {
+      "id": "pydantic-v1-validator",
+      "package": "pypi:pydantic",
+      "range": ">=2.0.0",
+      "pattern": "@(validator|root_validator)\\b",
+      "context": "pydantic",
+      "globs": [
+        "*.py"
+      ],
+      "severity": "warn",
+      "message": "@validator / @root_validator are deprecated in Pydantic v2. Use @field_validator('field') (a classmethod) or @model_validator(mode='before'|'after').",
+      "flags": ""
+    },
+    {
+      "id": "pydantic-v1-config",
+      "package": "pypi:pydantic",
+      "range": ">=2.0.0",
+      "pattern": "^\\s+class\\s+Config\\s*:",
+      "flags": "m",
+      "context": "pydantic|BaseModel",
+      "globs": [
+        "*.py"
+      ],
+      "severity": "warn",
+      "message": "The inner `class Config` is deprecated in Pydantic v2. Use model_config = ConfigDict(...) on the model."
+    },
+    {
+      "id": "pydantic-v2-basesettings",
+      "package": "pypi:pydantic",
+      "range": ">=2.0.0",
+      "pattern": "from\\s+pydantic\\s+import\\s+[^\\n]*\\bBaseSettings\\b",
+      "globs": [
+        "*.py"
+      ],
+      "severity": "deny",
+      "message": "BaseSettings moved out of pydantic in v2 (importing it raises an error). Install pydantic-settings and use: from pydantic_settings import BaseSettings, SettingsConfigDict.",
+      "flags": ""
+    },
+    {
+      "id": "express-5-app-del",
+      "package": "npm:express",
+      "range": ">=5.0.0",
+      "pattern": "\\b(app|router)\\.del\\s*\\(",
+      "globs": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx",
+        "*.mjs",
+        "*.cjs"
+      ],
+      "severity": "deny",
+      "message": "app.del() was removed in Express 5. Use app.delete().",
+      "flags": ""
+    },
+    {
+      "id": "express-5-req-param",
+      "package": "npm:express",
+      "range": ">=5.0.0",
+      "pattern": "\\breq\\.param\\s*\\(",
+      "globs": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx",
+        "*.mjs",
+        "*.cjs"
+      ],
+      "severity": "deny",
+      "message": "req.param(name) was removed in Express 5. Read req.params, req.body or req.query explicitly.",
+      "flags": ""
+    },
+    {
+      "id": "moment-maintenance",
+      "package": "npm:moment",
+      "range": "*",
+      "pattern": "from\\s+['\\\"]moment['\\\"]|require\\(\\s*['\\\"]moment['\\\"]\\s*\\)",
+      "globs": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx",
+        "*.mjs",
+        "*.cjs"
+      ],
+      "severity": "warn",
+      "message": "moment is in maintenance mode (no new features). For new code prefer date-fns, Luxon, Day.js or native Intl/Temporal.",
+      "flags": ""
+    },
+    {
+      "id": "request-deprecated",
+      "package": "npm:request",
+      "range": "*",
+      "pattern": "from\\s+['\\\"]request['\\\"]|require\\(\\s*['\\\"]request['\\\"]\\s*\\)",
+      "globs": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx",
+        "*.mjs",
+        "*.cjs"
+      ],
+      "severity": "warn",
+      "message": "The request package has been deprecated since 2020. Use the built-in fetch (Node 18+), undici, or axios.",
+      "flags": ""
+    },
+    {
+      "id": "node-fs-exists",
+      "package": "runtime:node",
+      "range": "*",
+      "pattern": "\\bfs\\.exists\\s*\\(",
+      "globs": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx",
+        "*.mjs",
+        "*.cjs"
+      ],
+      "severity": "warn",
+      "message": "fs.exists() is deprecated in Node. Use fs.existsSync(), or fs.promises.access()/stat() and handle ENOENT.",
+      "flags": ""
+    },
+    {
+      "id": "python-utcnow",
+      "package": "runtime:python",
+      "range": ">=3.12.0",
+      "pattern": "\\.utcnow\\s*\\(\\s*\\)|\\.utcfromtimestamp\\s*\\(",
+      "globs": [
+        "*.py"
+      ],
+      "severity": "warn",
+      "message": "datetime.utcnow() and utcfromtimestamp() are deprecated since Python 3.12. Use datetime.now(timezone.utc) / datetime.fromtimestamp(ts, timezone.utc).",
+      "flags": ""
+    },
+    {
+      "id": "python-312-removed-modules",
+      "package": "runtime:python",
+      "range": ">=3.12.0",
+      "pattern": "^\\s*(import\\s+(imp|distutils)\\b|from\\s+(imp|distutils)(\\.\\w+)*\\s+import\\b)",
+      "flags": "m",
+      "globs": [
+        "*.py"
+      ],
+      "severity": "deny",
+      "message": "distutils and imp were removed in Python 3.12. Use setuptools / packaging (distutils) and importlib (imp)."
+    },
+    {
+      "id": "pandas-2-append",
+      "package": "pypi:pandas",
+      "range": ">=2.0.0",
+      "pattern": "\\b(df|frame|\\w+_df|df_\\w+)\\.append\\s*\\(",
+      "context": "pandas",
+      "globs": [
+        "*.py"
+      ],
+      "severity": "warn",
+      "message": "DataFrame.append / Series.append were removed in pandas 2.0. Use pd.concat([df, other], ignore_index=True).",
+      "flags": ""
+    },
+    {
+      "id": "pandas-2-iteritems",
+      "package": "pypi:pandas",
+      "range": ">=2.0.0",
+      "pattern": "\\.iteritems\\s*\\(",
+      "context": "pandas",
+      "globs": [
+        "*.py"
+      ],
+      "severity": "warn",
+      "message": "DataFrame.iteritems / Series.iteritems were removed in pandas 2.0. Use .items().",
+      "flags": ""
+    },
+    {
+      "id": "sqlalchemy-2-query",
+      "package": "pypi:sqlalchemy",
+      "range": ">=2.0.0",
+      "pattern": "\\b\\w*session\\w*\\.query\\s*\\(",
+      "flags": "i",
+      "globs": [
+        "*.py"
+      ],
+      "severity": "warn",
+      "message": "session.query() is the legacy Query API in SQLAlchemy 2.0. New code should use select(): session.scalars(select(User).where(...)) / session.execute(select(...))."
+    },
+    {
+      "id": "sqlalchemy-2-declarative-import",
+      "package": "pypi:sqlalchemy",
+      "range": ">=2.0.0",
+      "pattern": "from\\s+sqlalchemy\\.ext\\.declarative\\s+import\\s+[^\\n]*\\bdeclarative_base\\b",
+      "globs": [
+        "*.py"
+      ],
+      "severity": "warn",
+      "message": "sqlalchemy.ext.declarative.declarative_base is deprecated (moved in 2.0). Subclass sqlalchemy.orm.DeclarativeBase instead.",
+      "flags": ""
+    },
+    {
+      "id": "tailwind-4-js-config",
+      "package": "npm:tailwindcss",
+      "range": ">=4.0.0",
+      "pattern": "module\\.exports|export\\s+default",
+      "globs": [
+        "tailwind.config.*",
+        "*/tailwind.config.*"
+      ],
+      "severity": "warn",
+      "message": "Tailwind v4 is configured in CSS: put tokens in an @theme block in your main CSS file. A JS tailwind.config is no longer picked up automatically; it only loads via an explicit @config directive.",
+      "flags": ""
+    },
+    {
+      "id": "tailwind-4-directives",
+      "package": "npm:tailwindcss",
+      "range": ">=4.0.0",
+      "pattern": "@tailwind\\s+(base|components|utilities)\\b",
+      "globs": [
+        "*.css",
+        "*.pcss",
+        "*.scss"
+      ],
+      "severity": "warn",
+      "message": "The @tailwind directives were removed in Tailwind v4. Use a single @import \"tailwindcss\"; line.",
+      "flags": ""
+    },
+    {
+      "id": "anthropic-py-text-completions",
+      "package": "pypi:anthropic",
+      "range": "*",
+      "pattern": "\\b(HUMAN_PROMPT|AI_PROMPT)\\b|(\\\\n|\\n){2}Human:|(?<!chat)\\.completions\\.create\\s*\\(",
+      "context": "anthropic",
+      "globs": [
+        "*.py"
+      ],
+      "severity": "warn",
+      "message": "This is the legacy Text Completions API (\\n\\nHuman: prompts). Use the Messages API: client.messages.create(model=..., max_tokens=..., messages=[{\"role\": \"user\", \"content\": ...}]).",
+      "flags": ""
+    },
+    {
+      "id": "anthropic-js-text-completions",
+      "package": "npm:@anthropic-ai/sdk",
+      "range": "*",
+      "pattern": "\\b(HUMAN_PROMPT|AI_PROMPT)\\b|(\\\\n|\\n){2}Human:|(?<!chat)\\.completions\\.create\\s*\\(",
+      "context": "anthropic",
+      "globs": [
+        "*.js",
+        "*.jsx",
+        "*.ts",
+        "*.tsx",
+        "*.mjs",
+        "*.cjs"
+      ],
+      "severity": "warn",
+      "message": "This is the legacy Text Completions API (\\n\\nHuman: prompts). Use the Messages API: client.messages.create({ model, max_tokens, messages: [{ role: 'user', content }] }).",
+      "flags": ""
+    }
+  ]
+}

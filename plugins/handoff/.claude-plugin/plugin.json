@@ -1,0 +1,19 @@
+{
+  "name": "handoff",
+  "description": "Structured session notes (decisions, dead ends, open items, gotchas) that load only when relevant.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Deep Field",
+    "url": "https://deepfieldstudios.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "memory",
+    "handoff",
+    "notes",
+    "session",
+    "context"
+  ],
+  "homepage": "https://github.com/deepfieldstudios/deep-field-labs/tree/main/plugins/handoff",
+  "repository": "https://github.com/deepfieldstudios/deep-field-labs"
+}

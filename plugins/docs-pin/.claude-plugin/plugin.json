@@ -1,0 +1,20 @@
+{
+  "name": "docs-pin",
+  "description": "Pins Claude to the dependency versions actually installed: injects them at session start and flags edits that use APIs deprecated or removed in those versions.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Deep Field",
+    "url": "https://deepfieldstudios.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "dependencies",
+    "versions",
+    "lockfile",
+    "deprecation",
+    "api",
+    "hooks"
+  ],
+  "homepage": "https://github.com/deepfieldstudios/deep-field-labs/tree/main/plugins/docs-pin",
+  "repository": "https://github.com/deepfieldstudios/deep-field-labs"
+}

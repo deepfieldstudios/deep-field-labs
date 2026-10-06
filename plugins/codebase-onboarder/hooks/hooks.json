@@ -1,0 +1,14 @@
+{
+  "description": "codebase-onboarder: inject ONBOARDING.md essentials at start; learn gotchas and verify commands from Bash results.",
+  "hooks": {
+    "SessionStart": [
+      {"hooks": [{"type": "command", "command": "python3", "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/session_start.py"], "timeout": 10}]}
+    ],
+    "PostToolUse": [
+      {"matcher": "Bash", "hooks": [{"type": "command", "command": "python3", "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/post_bash.py"], "timeout": 10}]}
+    ],
+    "PostToolUseFailure": [
+      {"matcher": "Bash", "hooks": [{"type": "command", "command": "python3", "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/post_bash.py"], "timeout": 10}]}
+    ]
+  }
+}

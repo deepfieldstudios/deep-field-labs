@@ -1,0 +1,11 @@
+{
+  "description": "spend-meter: re-price the session after every tool call, enforce budgets once per threshold, and flag repeated failures.",
+  "hooks": {
+    "PostToolUse": [
+      {"matcher": ".*", "hooks": [{"type": "command", "command": "python3", "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/hook.py"], "timeout": 10}]}
+    ],
+    "PostToolUseFailure": [
+      {"matcher": ".*", "hooks": [{"type": "command", "command": "python3", "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/hook.py"], "timeout": 10}]}
+    ]
+  }
+}

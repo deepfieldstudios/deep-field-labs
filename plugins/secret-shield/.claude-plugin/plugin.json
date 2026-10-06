@@ -1,0 +1,21 @@
+{
+  "name": "secret-shield",
+  "description": "Stops credentials leaving the machine: blocks secrets in prompts, file writes, commits, pushes, web requests and MCP calls, and keeps a fingerprint-only rotation register.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Deep Field",
+    "url": "https://deepfieldstudios.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "secrets",
+    "credentials",
+    "api-keys",
+    "hooks",
+    "git",
+    "rotation"
+  ],
+  "homepage": "https://github.com/deepfieldstudios/deep-field-labs/tree/main/plugins/secret-shield",
+  "repository": "https://github.com/deepfieldstudios/deep-field-labs"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "diff-digest",
+  "description": "Regroups big agent diffs by intent (core logic, tests, mechanical, config, docs, generated) and risk, so review starts with the hunks that matter.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Deep Field",
+    "url": "https://deepfieldstudios.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "code-review",
+    "diff",
+    "pull-request",
+    "risk",
+    "git"
+  ],
+  "homepage": "https://github.com/deepfieldstudios/deep-field-labs/tree/main/plugins/diff-digest",
+  "repository": "https://github.com/deepfieldstudios/deep-field-labs"
+}

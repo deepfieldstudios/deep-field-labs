@@ -1,0 +1,19 @@
+{
+  "name": "spend-meter",
+  "description": "Live cost per session from the transcript, session and daily budgets that warn then pause, and a loop detector for repeated failures.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Deep Field",
+    "url": "https://deepfieldstudios.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "cost",
+    "budget",
+    "tokens",
+    "statusline",
+    "loop-detection"
+  ],
+  "homepage": "https://github.com/deepfieldstudios/deep-field-labs/tree/main/plugins/spend-meter",
+  "repository": "https://github.com/deepfieldstudios/deep-field-labs"
+}

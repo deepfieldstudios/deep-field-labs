@@ -1,0 +1,21 @@
+{
+  "name": "office-mode",
+  "description": "Claude for people who live in spreadsheets, documents, PDFs and slides: every edit saves a copy first, changes are explained in plain English, and anything can be put back.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Deep Field",
+    "url": "https://deepfieldstudios.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "office",
+    "spreadsheets",
+    "excel",
+    "word",
+    "versions",
+    "undo",
+    "non-developers"
+  ],
+  "homepage": "https://github.com/deepfieldstudios/deep-field-labs/tree/main/plugins/office-mode",
+  "repository": "https://github.com/deepfieldstudios/deep-field-labs"
+}

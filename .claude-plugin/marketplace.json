@@ -1,0 +1,64 @@
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "deep-field-labs",
+  "owner": {
+    "name": "Deep Field",
+    "url": "https://deepfieldstudios.com"
+  },
+  "plugins": [
+    {
+      "name": "receipts",
+      "source": "./plugins/receipts",
+      "description": "Ties every 'done' claim to the command that proves it."
+    },
+    {
+      "name": "docs-pin",
+      "source": "./plugins/docs-pin",
+      "description": "Version-correct API checks against the lockfile."
+    },
+    {
+      "name": "blast-radius",
+      "source": "./plugins/blast-radius",
+      "description": "Risk-scored permissions with previews and snapshots."
+    },
+    {
+      "name": "handoff",
+      "source": "./plugins/handoff",
+      "description": "Structured session notes that load only when relevant."
+    },
+    {
+      "name": "spend-meter",
+      "source": "./plugins/spend-meter",
+      "description": "Live cost per task, budgets and loop detection."
+    },
+    {
+      "name": "diff-digest",
+      "source": "./plugins/diff-digest",
+      "description": "Regroups big diffs by intent and risk for review."
+    },
+    {
+      "name": "secret-shield",
+      "source": "./plugins/secret-shield",
+      "description": "Stops credentials leaving the machine; keeps a rotation register."
+    },
+    {
+      "name": "codebase-onboarder",
+      "source": "./plugins/codebase-onboarder",
+      "description": "A living ONBOARDING.md for humans and agents."
+    },
+    {
+      "name": "office-mode",
+      "source": "./plugins/office-mode",
+      "description": "Auto-versioned documents and safe edits for non-developers."
+    },
+    {
+      "name": "prompt-regression",
+      "source": "./plugins/prompt-regression",
+      "description": "Golden-example tests for prompts and model changes."
+    }
+  ],
+  "metadata": {
+    "description": "Ten guardrail, cost and continuity plugins for Claude Code: proof behind \"done\", secret blocking, risk-scored permissions, spend tracking, review digests and more.",
+    "version": "0.1.0"
+  }
+}

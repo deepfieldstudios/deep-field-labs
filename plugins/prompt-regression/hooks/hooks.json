@@ -1,0 +1,13 @@
+{
+  "description": "prompt-regression: after a prompt file or model id changes, remind Claude to run the prompt tests (once per file per session).",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          { "type": "command", "command": "python3", "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/hook_prompt_changed.py"], "timeout": 10 }
+        ]
+      }
+    ]
+  }
+}

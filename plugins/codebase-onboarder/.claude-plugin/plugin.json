@@ -1,0 +1,19 @@
+{
+  "name": "codebase-onboarder",
+  "description": "A living ONBOARDING.md: static repo scan, verified commands, and gotchas learned from real failures.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Deep Field",
+    "url": "https://deepfieldstudios.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "onboarding",
+    "documentation",
+    "repo-map",
+    "commands",
+    "gotchas"
+  ],
+  "homepage": "https://github.com/deepfieldstudios/deep-field-labs/tree/main/plugins/codebase-onboarder",
+  "repository": "https://github.com/deepfieldstudios/deep-field-labs"
+}

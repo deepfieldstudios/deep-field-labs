@@ -1,0 +1,20 @@
+{
+  "description": "receipts: log every Bash run to a per-session ledger, then check 'done' claims in the final reply against it.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "python3", "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/record_run.py"], "timeout": 10 }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "python3", "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/check_claims.py"], "timeout": 15 }
+        ]
+      }
+    ]
+  }
+}

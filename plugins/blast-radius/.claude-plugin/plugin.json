@@ -1,0 +1,21 @@
+{
+  "name": "blast-radius",
+  "description": "Risk-scored permissions for Claude Code: auto-allows safe commands, asks with a plain-English preview for dangerous ones, and snapshots files before destructive commands.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Deep Field",
+    "url": "https://deepfieldstudios.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "permissions",
+    "safety",
+    "hooks",
+    "git",
+    "snapshot",
+    "rm",
+    "deploy"
+  ],
+  "homepage": "https://github.com/deepfieldstudios/deep-field-labs/tree/main/plugins/blast-radius",
+  "repository": "https://github.com/deepfieldstudios/deep-field-labs"
+}

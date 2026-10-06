@@ -1,0 +1,20 @@
+{
+  "name": "prompt-regression",
+  "description": "Golden-example tests for AI features: JSON test suites for prompts, offline replay, live runs against the Claude API, regression reports, and a nudge to rerun them whenever a prompt or model id changes.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Deep Field",
+    "url": "https://deepfieldstudios.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "prompts",
+    "evals",
+    "regression",
+    "testing",
+    "llm",
+    "ci"
+  ],
+  "homepage": "https://github.com/deepfieldstudios/deep-field-labs/tree/main/plugins/prompt-regression",
+  "repository": "https://github.com/deepfieldstudios/deep-field-labs"
+}

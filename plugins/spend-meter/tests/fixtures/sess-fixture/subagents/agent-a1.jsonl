@@ -1,0 +1,2 @@
+{"type": "user", "isSidechain": true, "timestamp": "2026-10-01T10:00:30Z", "message": {"role": "user", "content": "research subtask"}}
+{"type": "assistant", "isSidechain": true, "timestamp": "2026-10-01T10:00:40Z", "cwd": "/tmp/proj", "sessionId": "sess-fixture", "message": {"model": "claude-sonnet-5-5", "type": "message", "role": "assistant", "content": [{"type": "text", "text": "done"}], "usage": {"input_tokens": 1000, "output_tokens": 1000}, "id": "msg_S"}, "requestId": "req_S"}
