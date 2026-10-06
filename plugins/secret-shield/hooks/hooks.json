@@ -4,7 +4,11 @@
     "UserPromptSubmit": [
       {
         "hooks": [
-          { "type": "command", "command": "python3", "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/prompt_hook.py"], "timeout": 10 }
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/prompt_hook.sh\"",
+            "timeout": 10
+          }
         ]
       }
     ],
@@ -12,7 +16,11 @@
       {
         "matcher": "Write|Edit|MultiEdit|NotebookEdit|Bash|WebFetch|WebSearch|mcp__.*",
         "hooks": [
-          { "type": "command", "command": "python3", "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/pretool_hook.py"], "timeout": 20 }
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/pretool_hook.sh\"",
+            "timeout": 20
+          }
         ]
       }
     ],
@@ -20,7 +28,11 @@
       {
         "matcher": "Read|Bash",
         "hooks": [
-          { "type": "command", "command": "python3", "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/posttool_hook.py"], "timeout": 10 }
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/posttool_hook.sh\"",
+            "timeout": 10
+          }
         ]
       }
     ]

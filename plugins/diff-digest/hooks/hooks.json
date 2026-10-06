@@ -2,7 +2,16 @@
   "description": "diff-digest: after a successful git push or gh pr create, suggest /diff-digest:review when the branch changes more than 300 lines.",
   "hooks": {
     "PostToolUse": [
-      {"matcher": "Bash", "hooks": [{"type": "command", "command": "python3", "args": ["${CLAUDE_PLUGIN_ROOT}/scripts/push_hook.py"], "timeout": 10}]}
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/push_hook.sh\"",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   }
 }
