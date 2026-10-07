@@ -1,6 +1,6 @@
 ---
 description: Show the dependency versions docs-pin detected for this project
-allowed-tools: Bash(python3:*)
+allowed-tools: Bash(python3 "${CLAUDE_PLUGIN_ROOT}/scripts/show_versions.py")
 ---
 Pinned versions detected by docs-pin:
 
