@@ -1,6 +1,6 @@
 {
   "name": "blast-radius",
-  "description": "Risk-scored permissions for Claude Code: auto-allows safe commands, asks with a plain-English preview for dangerous ones, and snapshots files before destructive commands.",
+  "description": "Risk-scored permissions for Claude Code: asks with a plain-English preview before dangerous commands, snapshots files before destructive ones, and can optionally auto-approve low-risk commands (off by default).",
   "version": "0.1.0",
   "author": {
     "name": "Deep Field",
