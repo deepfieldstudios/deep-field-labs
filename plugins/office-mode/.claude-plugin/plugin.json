@@ -17,5 +17,9 @@
     "non-developers"
   ],
   "homepage": "https://github.com/deepfieldstudios/deep-field-labs/tree/main/plugins/office-mode",
-  "repository": "https://github.com/deepfieldstudios/deep-field-labs"
+  "repository": "https://github.com/deepfieldstudios/deep-field-labs",
+  "documentationUrl": "https://github.com/deepfieldstudios/deep-field-labs/blob/main/plugins/office-mode/README.md",
+  "supportUrl": "https://github.com/deepfieldstudios/deep-field-labs/issues",
+  "privacyPolicyUrl": "https://github.com/deepfieldstudios/deep-field-labs/blob/main/PRIVACY.md",
+  "termsOfServiceUrl": "https://github.com/deepfieldstudios/deep-field-labs/blob/main/TERMS.md"
 }
