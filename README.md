@@ -24,7 +24,7 @@ Python 3.9 or later is required (3.11+ for docs-pin's `pyproject.toml` parsing).
 |---|---|
 | [secret-shield](plugins/secret-shield) | Blocks API keys and other credentials from leaving through prompts, files, web requests or commits. Keeps a rotation register that stores fingerprints, never the keys themselves. |
 | [receipts](plugins/receipts) | Records every command Claude runs, then checks claims like "all tests pass" or "deployed" against those runs before the turn ends. |
-| [blast-radius](plugins/blast-radius) | Scores each shell command for risk. Safe ones run without a prompt; dangerous ones get a plain-English preview and a git snapshot first. |
+| [blast-radius](plugins/blast-radius) | Scores each shell command for risk. Dangerous ones get a plain-English preview and a git snapshot first. Optionally (off by default), safe ones skip the prompt. |
 | [docs-pin](plugins/docs-pin) | Reads your lockfile so Claude writes code for the versions you actually have, and flags deprecated APIs as they're written. |
 
 ### Cost and review

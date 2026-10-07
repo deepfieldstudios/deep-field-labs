@@ -290,8 +290,20 @@ class TestHook(unittest.TestCase):
         return {"session_id": "s", "transcript_path": "/dev/null", "cwd": self.tmp,
                 "hook_event_name": "PreToolUse", "tool_name": tool, "tool_input": ti}
 
-    def test_low_allows(self):
+    def test_low_is_silent_by_default(self):
         out = run_hook(self.payload("git status && ls"), self.env)
+        self.assertNotIn("hookSpecificOutput", out or {})
+
+    def test_low_allows_when_opted_in(self):
+        os.makedirs(os.path.join(self.tmp, ".claude"), exist_ok=True)
+        with open(os.path.join(self.tmp, ".claude", "blast-radius.json"), "w") as fh:
+            json.dump({"auto_allow": True}, fh)
+        out = run_hook(self.payload("git status && ls"), self.env)
+        self.assertEqual(out["hookSpecificOutput"]["permissionDecision"], "allow")
+
+    def test_low_allows_via_env(self):
+        env = dict(self.env, BLAST_RADIUS_AUTO_ALLOW="1")
+        out = run_hook(self.payload("git status && ls"), env)
         self.assertEqual(out["hookSpecificOutput"]["permissionDecision"], "allow")
 
     def test_medium_defers(self):
@@ -349,7 +361,8 @@ class TestConfig(unittest.TestCase):
         return (out or {}).get("hookSpecificOutput", {}).get("permissionDecision")
 
     def test_deny_allow_ask_rules(self):
-        self.write_cfg({"deny": [r"terraform\s+destroy"], "allow": [r"^make dev$"], "ask": [r"npm install"]})
+        self.write_cfg({"deny": [r"terraform\s+destroy"], "allow": [r"^make dev$"], "ask": [r"npm install"],
+                        "auto_allow": True})
         self.assertEqual(self.decision("terraform destroy"), "deny")
         self.assertEqual(self.decision("make dev"), "allow")
         self.assertEqual(self.decision("npm install left-pad"), "ask")

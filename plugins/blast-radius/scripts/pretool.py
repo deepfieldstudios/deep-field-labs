@@ -48,7 +48,7 @@ def decide(data):
         rule = _matches(cfg.get("allow"), subject)
         if rule:
             return (_out("allow", "blast-radius: allowed by config rule /%s/" % rule)
-                    if cfg.get("auto_allow", True) else None), \
+                    if cfg.get("auto_allow", False) else None), \
                 _rec(tool, subject, 0, "low", "allow", ["config allow /%s/" % rule])
         a = scoring.assess(subject, cwd)
         if _matches(cfg.get("ask"), subject):
@@ -67,7 +67,7 @@ def decide(data):
     snap = None
     if tier == "low":
         out = _out("allow", "%s: %s" % (label, "; ".join(a.reasons) or "read-only or easily undone"))\
-            if cfg.get("auto_allow", True) else None
+            if cfg.get("auto_allow", False) else None
         decision = "allow" if out else "defer"
     elif tier == "medium":
         msg = "%s: %s" % (label, "; ".join(a.reasons) or "unrecognised command")

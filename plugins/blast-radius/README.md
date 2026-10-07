@@ -8,7 +8,7 @@ outside the project, from 0 to 100:
 
 | Tier | Score | What happens |
 |---|---|---|
-| low | < 30 | Auto-approved, no prompt. Covers `ls`, `cat`, `grep`, `git status/diff/log`, test runners, linters, `git add/commit`. |
+| low | < 30 | Left to Claude Code's normal permissions. With `auto_allow` on (opt-in), auto-approved with no prompt. Covers `ls`, `cat`, `grep`, `git status/diff/log`, test runners, linters, `git add/commit`. |
 | medium | 30–69 | No decision. The normal permission flow runs, with a one-line note on why it's medium. |
 | high | ≥ 70 | You're asked, with a plain-English preview. For local destructive commands it takes a recovery snapshot first. |
 
@@ -89,7 +89,7 @@ Optional, at `<project>/.claude/blast-radius.json`:
   "allow": ["^make dev$"],
   "ask":   ["\\bnpm install\\b"],
   "deny":  ["terraform\\s+destroy"],
-  "auto_allow": true,
+  "auto_allow": false,
   "snapshot": { "enabled": true, "max_mb": 50 },
   "preview_max_files": 5000,
   "show_medium": true
@@ -97,8 +97,10 @@ Optional, at `<project>/.claude/blast-radius.json`:
 ```
 
 `allow`, `ask` and `deny` are Python regexes matched against the full command. `deny` wins
-over `allow`. `auto_allow: false` means blast-radius never auto-approves. It only asks or
-defers.
+over `allow`. **`auto_allow` is off by default:** blast-radius only adds warnings, previews and snapshots, and
+never approves anything on your behalf. Set `"auto_allow": true` in a project config, or
+`BLAST_RADIUS_AUTO_ALLOW=1` in your environment for every project, to have low-risk commands
+approved without a prompt.
 
 State lives in `<project>/.claude/blast-radius/`, or in `$BLAST_RADIUS_HOME` if that is set:
 
@@ -110,9 +112,9 @@ State lives in `<project>/.claude/blast-radius/`, or in `$BLAST_RADIUS_HOME` if 
 
 - **It's heuristics, not a sandbox.** A script that deletes files (`python cleanup.py`) scores
   as unknown (medium), not high. Only inline `-c`/`-e` code is inspected.
-- **Low-tier `allow` skips Claude Code's own prompt for that command.** Your settings' deny rules
-  still apply, and any other hook's `deny` (secret-shield's, for example) still wins. If you want
-  blast-radius to advise without ever approving, set `auto_allow: false`.
+- **With `auto_allow` on, a low-tier `allow` skips Claude Code's own prompt for that command.**
+  Your settings' deny rules still apply, and any other hook's `deny` (secret-shield's, for
+  example) still wins. It is off by default.
 - **Snapshots are only as good as the moment they're taken.** They happen when the hook runs,
   not right before execution. Copy snapshots skip anything over the size or file cap.
   `git add -A` hashes large untracked files into `.git/objects`. Snapshot refs keep those
